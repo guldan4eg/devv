@@ -6,8 +6,7 @@ dist/
 build/
 .eggs/
 
-# Data & checkpoints
-data/
+# Checkpoints
 checkpoints/
 *.pth
 *.onnx
