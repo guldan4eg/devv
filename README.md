@@ -15,8 +15,9 @@ Impressionism, Realism, Romanticism, Expressionism, Baroque, Ukiyo-e, Art Nouvea
 ├── train.py         # Training loop (transfer learning + fine-tuning)
 ├── evaluate.py      # Test evaluation, confusion matrix, per-class metrics
 ├── inference.py     # Single-image prediction with Grad-CAM
-├── export_onnx.py   # ONNX export
-├── utils.py         # EarlyStopping, metrics, visualization
+├── export_onnx.py       # ONNX export
+├── download_dataset.py  # Download WikiArt from HuggingFace
+├── utils.py             # EarlyStopping, metrics, visualization
 └── requirements.txt
 ```
 
@@ -28,17 +29,18 @@ pip install -r requirements.txt
 
 ## Dataset
 
-Download the [WikiArt dataset from Kaggle](https://www.kaggle.com/datasets/steubk/wikiart) and organize it so that each class has its own subdirectory:
+A sample dataset (50 images per class, 500 total) is included in `data/`.
 
-```
-data/
-├── Impressionism/
-├── Realism/
-├── Romanticism/
-...
+To download the full dataset from HuggingFace:
+
+```bash
+python download_dataset.py                          # all available images
+python download_dataset.py --max_per_class 500      # 500 per class
 ```
 
-Set the path in `config.py` or via the `--data_dir` CLI argument.
+You can also use the [WikiArt dataset from Kaggle](https://www.kaggle.com/datasets/steubk/wikiart) — organise it so each class has its own subdirectory matching the names in `config.py`.
+
+Set the path via the `--data_dir` CLI argument.
 
 ## Training
 
